@@ -1,0 +1,6 @@
+{% autoescape off %}
+    Hi {{ book.user.username }},
+    Your book {{book.title}} has been requested to be donated from {{requested_user.username}}. Please click on the above link to let you donee know that you are interested in sharing your book.
+
+    http://{{ domain }}{% url 'store:request_accepted' uidb64=uid token=token book=book %}
+{% endautoescape %}

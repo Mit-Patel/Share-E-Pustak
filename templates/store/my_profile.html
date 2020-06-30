@@ -1,0 +1,43 @@
+{% extends "store/base.html" %}
+{% load static %}
+{% block title_block %}My Profile{% endblock title_block %}
+
+{% block body_block %}
+<section class="wn_contact_area bg--white pt--80">
+<div class="container">
+    <div class="row my-2">
+        <div class="col-lg-10 order-lg-2">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <h3 class="active">Edit Profile</h3>
+                </li>
+            </ul>
+            <div class=" py-4">                
+                <div class="" id="edit">
+                {% if errors %}
+                    <div class='alert alert-danger' role='alert'>{{ errors }}</div>
+                {% elif success %}
+                    <div class='alert alert-success' role='alert'>{{ success }}</div>
+                {% endif %}
+                    <form role="form" method="post">
+                        {% csrf_token %}
+
+                        {{ user_form.as_p }}
+                        {{ form.as_p }}
+                        {{ type_form.as_p }}
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label form-control-label"></label>
+                            <div class="col-lg-9">
+                                <input type="submit" class="btn btn-primary" value="Save Changes">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+</section>
+{% endblock body_block %}

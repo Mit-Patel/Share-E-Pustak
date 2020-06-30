@@ -1,0 +1,113 @@
+{% extends "authenticate_app/base.html" %}
+{% load static %}
+<script src="{% static 'js/register.js' %}"></script>
+
+{% block title_block %}Register{% endblock title_block %}
+
+{% block body_block %}
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+            <div class="col-lg-7">                
+                <div class="p-5">
+                    <div id="alertDiv"></div>
+                   <!-- {% if errors %}
+                        <div class='alert alert-danger' role='alert'></div>
+                    {% endif %}
+                    {% if user_error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ user_error }}
+                        </div>
+                    {% endif %}
+                    {% if profile_error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ profile_error }}
+                        </div>
+                    {% endif %}   -->                                                    
+                        <div class='text-center'>
+                            <h1 class='h4 text-gray-900 mb-4'>Create an Account!</h1>
+                        </div>
+                        
+                        <form class="user" method="post" id="form_register">
+                            {% csrf_token %}
+
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ user_form.first_name }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ user_form.last_name }}
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ profile_form.mobile_no }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ profile_form.city }}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                {{ user_form.email }}
+                            </div>
+                            <div class="form-group">
+                                {{ profile_form.type }}
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    {{ user_form.username }}
+                                </div>
+                                <div class="col-sm-6">
+                                    {{ user_form.password }}
+                                </div>
+                            </div>
+                            
+                            <input type="submit" class="btn btn-primary btn-user btn-block" id="btn_register" value="Register Account">
+                            
+                            <hr>
+                            
+                            <a href="#" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Register with Google
+                            </a>
+                        </form>
+                        
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="#">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="{% url 'authenticate_app:user_login' %}">Already have an account? Login!</a>
+                        </div> 
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" style="display:none;" id="modal_register">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mobile Verification</h5>                
+            </div>
+            <div class="modal-body">
+                <p>We have sent you an OTP in your mobile. Please verify the OTP to continue.</p>
+                <form id="form_verify_otp" method="post" >
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="otp">Enter OTP</label>
+                        
+                        <input type="number" class="form-control" id="otp" placeholder="OTP" maxlength="6" style="-webkit-appearance: none;margin: 0;-moz-appearance:textfield;">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock body_block %}

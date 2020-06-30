@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">        
+        
+        <title>{% block title_block %}{% endblock title_block %}</title>
+
+        <!-- Custom fonts for this template-->
+        <link rel="stylesheet"  href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" >
+        
+        <!-- Custom styles for this template-->
+        <link rel="stylesheet" href="{% static 'css/sb-admin-2.min.css' %}" >
+
+    </head>
+
+    <body class="bg-gradient-primary">
+
+        <div class="container">
+            {% block body_block %}
+            
+            {% endblock body_block %}
+        </div>
+
+        <!-- Bootstrap core JavaScript-->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+        <!-- Core plugin JavaScript-->
+
+        <!-- Custom scripts for all pages-->
+        <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,40 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title_block    %}Dashboard
+{% endblock title_block     %}
+
+{% block body_block %}
+<div class="container-fluid">
+<div class=" py-4">                
+                <div class="" id="edit">
+                {% if errors %}
+                    <div class='alert alert-danger' role='alert'>{{ errors }}</div>
+                {% elif success %}
+                    <div class='alert alert-success' role='alert'>{{ success }}</div>
+                {% endif %}
+                    <form role="form" method="post">
+                        {% csrf_token %}
+
+                        {{ book_form.as_p }}
+                       
+                        <br>
+                        <div class="form-group row">
+                            
+                            <div class="col-lg-9">
+                                <input type="submit" class="btn btn-primary" value="Add Book">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+</div>
+
+{% comment %} {{book_upload_form.as_p}}
+{{author_form.as_p}}
+{{pub_form.as_p}}
+{{cat_form.as_p}}
+{{author_book_form.as_p}} {% endcomment %}
+
+{% endblock %}

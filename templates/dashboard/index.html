@@ -1,0 +1,58 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title_block    %}Dashboard
+{% endblock title_block     %}
+
+{% block body_block %}
+
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Uploaded Books</h1>    
+    </div>
+
+    <!-- Content Row -->
+    <div class="row">
+    {% if books %}
+        {% for book in books %}
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card">
+                    <a href="{% url 'dashboard:book_detail' book.isbn %}">
+                    <img class="card-img-top" src="/media/{{ book.image }}" alt="Card image cap" >
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xl-left font-weight-bold text-primary text-uppercase mb-1">{{ book.title }}</div>
+                        </div>           
+                        </div>
+                    </div>
+                    </a>
+                </div>
+            </div>    
+        {% endfor %}
+    {% else %}
+    {% endif %}
+    {% comment %} <!-- Earnings (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card">
+        <img class="card-img-top" src="{% static 'images/books/1.jpg' %}" alt="Card image cap">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xl-left font-weight-bold text-primary text-uppercase mb-1">Book Title</div>
+                <div class="h6 mb-0 font-weight-bold text-gray-800">Author</div>
+            </div>            
+            </div>
+        </div>
+        </div>
+    </div> {% endcomment %}
+</div>
+<!-- /.container-fluid -->
+
+     
+ 
+{% endblock body_block %}
